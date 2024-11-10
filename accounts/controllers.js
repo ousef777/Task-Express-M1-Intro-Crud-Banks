@@ -5,7 +5,7 @@ exports.accountsList = (req, res) => {
 };
 
 exports.getAccount = (req, res) => {
-    let account = accounts.find(acc => acc.username === req.params.username);
+    let account = { ...accounts.find(acc => acc.username === req.params.username) };
     if (req.query.currency == "usd") account.funds *= 3;
     res.status(200).json(account);
 };
