@@ -1,3 +1,5 @@
+
+const { v4:uuidv4 } = require('uuid');
 const accounts = require("./accounts");
 
 exports.accountsList = (req, res) => {
@@ -6,14 +8,15 @@ exports.accountsList = (req, res) => {
 
 exports.getAccount = (req, res) => {
     let account = { ...accounts.find(acc => acc.username === req.params.username) };
-    if (req.query.currency == "usd") account.funds *= 3;
+    if (req.query)
+        if (req.query.currency == "usd") account.funds *= 3;
     res.status(200).json(account);
 };
 
 exports.add = (req, res) => {
     const username = req.body.username;
     const newAccount = {
-        id: (accounts.at(-1).id + 1),
+        id: uuidv4(),
         username: username,
         funds: 0
     };

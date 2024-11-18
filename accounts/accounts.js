@@ -1,16 +1,18 @@
+const { v4:uuidv4 } = require('uuid');
+
 const accounts = [
   {
-    id: 1,
+    id: uuidv4(),
     username: 'Omar',
     funds: 30,
   },
   {
-    id: 2,
+    id: uuidv4(),
     username: 'Zainab',
     funds: 0,
   },
   {
-    id: 3,
+    id: uuidv4(),
     username: 'Salwa',
     funds: 100,
   },
